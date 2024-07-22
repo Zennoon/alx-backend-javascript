@@ -1,0 +1,1 @@
+This directory was created on July 22, 2024 as part of the ALX SE Backend Specialization track project '0x00. ES6 Basics'.
