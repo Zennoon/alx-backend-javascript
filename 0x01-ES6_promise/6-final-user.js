@@ -7,7 +7,7 @@ export default async function handleProfileSignup(firstName, lastName, fileName)
   vals.forEach(({ status, value, reason }) => {
     statusArray.push({
       status,
-      value: value || reason.message,
+      value: value || `Error: ${reason.message}`,
     });
   });
   return statusArray;
