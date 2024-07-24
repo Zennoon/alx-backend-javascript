@@ -9,7 +9,7 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
       arr.forEach(({ status, value, reason }) => {
         statusArray.push({
           status,
-          value: value || reason,
+          value: value || reason.message,
         });
       });
       return (statusArray);
