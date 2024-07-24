@@ -8,7 +8,7 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
     vals.forEach(({status, value, reason}) => {
       statusArray.push({
         status,
-        value: value || reason,
+        value: value || reason.message,
       })
     });
     return statusArray;
