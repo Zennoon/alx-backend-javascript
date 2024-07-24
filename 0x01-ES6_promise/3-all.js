@@ -8,4 +8,5 @@ export default function handleProfileSignUp() {
   }).catch(() => {
     console.log('Signup system offline');
   });
+  return (allPromises);
 }
