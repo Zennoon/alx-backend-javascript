@@ -7,7 +7,7 @@ export default function handleProfileSignup() {
     allPromises.then((arr) => {
       console.log(`${arr[0].body} ${arr[1].firstName} ${arr[1].lastName}`);
     }).catch(() => {
-      console.log('Signup system offline');
+      console.error('Signup system offline');
     });
   } catch (e) {
     console.error('Signup system offline');
