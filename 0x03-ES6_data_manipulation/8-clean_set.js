@@ -4,11 +4,5 @@ export default function cleanSet(set, startString) {
   if (!(set instanceof Set) || typeof startString !== 'string' || startString.length === 0) {
     return '';
   }
-  const contains = [];
-  for (const item of set) {
-    if (typeof item === 'string' && item.startsWith(startString)) {
-      contains.push(item.replace(startString, ''));
-    }
-  }
-  return contains.join('-');
+  return [...set].filter((val) => typeof val === 'string' && val.startsWith(startString)).map((val) => val.replace(startString, '')).join('-');
 }
