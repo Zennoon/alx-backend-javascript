@@ -1,6 +1,6 @@
 import getListStudents from "./0-get_list_students";
-import getStudentsIdsSum from "./3-get_ids_sum";
+import updateStudentGradeByCity from "./4-update_grade_by_city";
 
-const students = getListStudents();
+console.log(updateStudentGradeByCity(getListStudents(), "San Francisco", [{ studentId: 5, grade: 97 }, { studentId: 1, grade: 86 }]));
 
-console.log(getStudentsIdsSum(students));
+console.log(updateStudentGradeByCity(getListStudents(), "San Francisco", [{ studentId: 5, grade: 97 }]));
