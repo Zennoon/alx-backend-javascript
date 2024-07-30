@@ -1,0 +1,1 @@
+This directory was created on JUly 30, 2024 for the ALX SE backend track project about data manipulation in ES6.
