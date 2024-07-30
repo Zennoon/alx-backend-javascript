@@ -6,7 +6,7 @@ export default function cleanSet(set, startString) {
   }
   const contains = [];
   for (const item of set) {
-    if (item.startsWith(startString)) {
+    if (typeof item === 'string' && item.startsWith(startString)) {
       contains.push(item.replace(startString, ''));
     }
   }
