@@ -4,10 +4,6 @@ export default function createInt8TypedArray(length, position, value) {
   if (typeof position !== 'number' || position >= buffer.byteLength) {
     throw new Error('Position outside range');
   }
-  try {
-    typedArray[position] = value;
-  } catch (error) {
-    throw new Error('Position outside range');
-  }
+  typedArray[position] = value;
   return new DataView(buffer);
 }
