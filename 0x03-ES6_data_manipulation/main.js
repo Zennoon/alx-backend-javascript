@@ -1,3 +1,8 @@
+import updateUniqueItems from "./10-update_uniq_items";
 import groceriesList from "./9-groceries_list";
 
-console.log(groceriesList());
+const map = groceriesList();
+console.log(map);
+
+updateUniqueItems(map);
+console.log(map);
