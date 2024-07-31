@@ -1,0 +1,1 @@
+This directory was created on July 31, 2024 for the ALX SE backend track project about TypeScript.
