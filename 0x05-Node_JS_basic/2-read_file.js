@@ -1,38 +1,44 @@
-const fs = require('fs');
+#!/usr/bin/node
+const fs = require('node:fs');
 
-function countStudents(fileName) {
-  const students = {};
-  const fields = {};
-  let length = 0;
+// Function attempts to read file with provided
+// path synchronously
+const countStudents = (path) => {
   try {
-    const fileContents = fs.readFileSync(fileName, 'utf-8');
-    const lines = fileContents.toString().split('\n');
-    for (let i = 0; i < lines.length; i += 1) {
-      if (lines[i]) {
-        length += 1;
-        const field = lines[i].toString().split(',');
-        if (Object.prototype.hasOwnProperty.call(students, field[3])) {
-          students[field[3]].push(field[0]);
-        } else {
-          students[field[3]] = [field[0]];
-        }
-        if (Object.prototype.hasOwnProperty.call(fields, field[3])) {
-          fields[field[3]] += 1;
-        } else {
-          fields[field[3]] = 1;
-        }
+    const data = fs.readFileSync(path, 'utf-8').toString();
+
+    const lines = data.trim().split('\n');
+    const records = lines.slice(1, lines.length);
+
+    console.log(`Number of students: ${records.length}`);
+    const deptInfo = {};
+
+    for (const studentRecord of records) {
+      const fields = studentRecord.split(',');
+      const fName = fields[0];
+      const dept = fields[3];
+
+      if (dept in deptInfo) {
+        deptInfo[dept].studentCount += 1;
+        deptInfo[dept].studentNames.push(fName);
+      } else {
+        deptInfo[dept] = {
+          studentCount: 1,
+          studentNames: [fName],
+        };
       }
     }
-    const l = length - 1;
-    console.log(`Number of students: ${l}`);
-    for (const [key, value] of Object.entries(fields)) {
+    for (const [key, value] of Object.entries(deptInfo)) {
       if (key !== 'field') {
-        console.log(`Number of students in ${key}: ${value}. List: ${students[key].join(', ')}`);
+        const count = value.studentCount;
+        const allNames = value.studentNames.join(', ');
+
+        console.log(`Number of students in ${key}: ${count}. List: ${allNames}`);
       }
     }
-  } catch (error) {
-    throw Error('Cannot load the database');
+  } catch (err) {
+    throw new Error('Cannot load the database');
   }
-}
+};
 
 module.exports = countStudents;
