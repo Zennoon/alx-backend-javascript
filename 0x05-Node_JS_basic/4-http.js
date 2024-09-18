@@ -1,6 +1,6 @@
 // A simple server using Node's http module
 
-const { createServer } = require('http');
+const { createServer } = require('node:http');
 
 const app = createServer((req, res) => {
   res.setHeader('Content-Type', 'text/plain');
