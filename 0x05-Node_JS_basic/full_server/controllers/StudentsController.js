@@ -11,9 +11,8 @@ export default class StudentsController {
       }
       response.send(resBody.trim());
     }).catch(() => {
-      resBody.concat('Cannot load the database');
       response.statusCode = 500;
-      response.send(resBody);
+      response.send('Cannot load the database');
     });
   }
 
