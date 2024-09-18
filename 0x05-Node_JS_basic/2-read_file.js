@@ -1,4 +1,4 @@
-const fs = require('node:fs');
+const fs = require('fs');
 
 // Function attempts to read file with provided
 // path synchronously
