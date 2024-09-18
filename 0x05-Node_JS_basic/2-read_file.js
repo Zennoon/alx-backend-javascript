@@ -15,7 +15,7 @@ const countStudents = (path) => {
   const lines = data.trim().split('\n');
   const records = lines.slice(1, lines.length);
 
-  console.log(`Number of students: ${records.length}`);
+  process.stdout.write(`Number of students: ${records.length}\n`);
   const deptInfo = {};
 
   for (const studentRecord of records) {
@@ -39,7 +39,7 @@ const countStudents = (path) => {
       const count = deptInfo[dept].studentCount;
       const allNames = deptInfo[dept].studentNames.join(', ');
 
-      console.log(`Number of students in ${dept}: ${count}. List: ${allNames}`);
+      process.stdout.write(`Number of students in ${dept}: ${count}. List: ${allNames}\n`);
     }
   }
 };
