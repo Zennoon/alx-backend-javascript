@@ -45,8 +45,8 @@ const app = createServer((req, res) => {
   if (req.url === '/') {
     res.end('Hello Holberton School!');
   } else if (req.url === '/students') {
+    res.write('This is the list of our students\n');
     countStudents(dbPath).then((data) => {
-      res.write('This is the list of our students\n');
       res.end(data);
     }).catch((err) => {
       res.statusCode = 404;
