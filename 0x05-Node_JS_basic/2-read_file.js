@@ -5,34 +5,28 @@ const fs = require('node:fs');
 const countStudents = (path) => {
   try {
     const data = fs.readFileSync(path, 'utf-8').toString();
-
     const lines = data.trim().split('\n');
     const records = lines.slice(1, lines.length);
+    let length = 0;
 
-    console.log(`Number of students: ${records.length}`);
-    const deptInfo = {};
+    const studentsByField = {};
+    for (let i = 0; i < records.length; i += 1) {
+      const recordFields = records[i].split(',');
+      const fieldName = recordFields[3];
+      const studentName = recordFields[0];
 
-    for (const studentRecord of records) {
-      const fields = studentRecord.split(',');
-      const fName = fields[0];
-      const dept = fields[3];
-
-      if (dept in deptInfo) {
-        deptInfo[dept].studentCount += 1;
-        deptInfo[dept].studentNames.push(fName);
+      length += 1;
+      if (fieldName in studentsByField) {
+        studentsByField[fieldName].push(studentName);
       } else {
-        deptInfo[dept] = {
-          studentCount: 1,
-          studentNames: [fName],
-        };
+        studentsByField[fieldName] = [studentName];
       }
     }
-    for (const [key, value] of Object.entries(deptInfo)) {
-      if (key !== 'field') {
-        const count = value.studentCount;
-        const allNames = value.studentNames.join(', ');
+    console.log(`Number of students: ${length}`);
 
-        console.log(`Number of students in ${key}: ${count}. List: ${allNames}`);
+    for (const [key, val] of Object.entries(studentsByField)) {
+      if (key) {
+        console.log(`Number of students in ${key}: ${val.length}, List: ${val.join(', ')}`);
       }
     }
   } catch (err) {
