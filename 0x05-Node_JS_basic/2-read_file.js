@@ -11,24 +11,22 @@ const countStudents = (path) => {
     let length = 0;
 
     for (let i = 0; i < records.length; i += 1) {
-      if (records[i]) {
-        const recordFields = records[i].split(',');
-        const fieldName = recordFields[3];
-        const studentName = recordFields[0];
+      const recordFields = records[i].split(',');
+      const fieldName = recordFields[3];
+      const studentName = recordFields[0];
 
-        length += 1;
-        if (Object.prototype.hasOwnProperty.call(studentsByField, fieldName)) {
-          studentsByField[fieldName].push(studentName);
-        } else {
-          studentsByField[fieldName] = [studentName];
-        }
+      length += 1;
+      if (Object.prototype.hasOwnProperty.call(studentsByField, fieldName)) {
+        studentsByField[fieldName].push(studentName);
+      } else {
+        studentsByField[fieldName] = [studentName];
       }
     }
     console.log(`Number of students: ${length}`);
 
     for (const [key, val] of Object.entries(studentsByField)) {
       if (key) {
-        console.log(`Number of students in ${key}: ${val.length}, List: ${val.join(', ')}`);
+        console.log(`Number of students in ${key}: ${val.length}. List: ${val.join(', ')}`);
       }
     }
   } catch (err) {
