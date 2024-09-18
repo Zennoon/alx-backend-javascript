@@ -12,8 +12,6 @@ process.stdin.on('readable', () => {
   }
 });
 
-if (!process.stdin.isTTY) {
-  process.on('exit', () => {
-    console.log('This important software is now closing');
-  });
-}
+process.on('exit', () => {
+  console.log('This important software is now closing');
+});
