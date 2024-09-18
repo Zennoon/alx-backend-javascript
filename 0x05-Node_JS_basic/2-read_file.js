@@ -16,7 +16,7 @@ const countStudents = (path) => {
       const studentName = recordFields[0];
 
       length += 1;
-      if (fieldName in studentsByField) {
+      if (Object.prototype.hasOwnProperty.call(studentsByField, fieldName)) {
         studentsByField[fieldName].push(studentName);
       } else {
         studentsByField[fieldName] = [studentName];
