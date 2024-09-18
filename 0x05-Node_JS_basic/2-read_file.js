@@ -1,4 +1,3 @@
-#!/usr/bin/node
 const fs = require('node:fs');
 
 // Function attempts to read file with provided
