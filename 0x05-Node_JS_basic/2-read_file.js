@@ -21,7 +21,7 @@ const countStudents = (path) => {
   for (const studentRecord of records) {
     const fields = studentRecord.split(',');
     const fName = fields[0];
-    const dept = fields.at(-1);
+    const dept = fields[3];
 
     if (dept in deptInfo) {
       deptInfo[dept].studentCount += 1;
