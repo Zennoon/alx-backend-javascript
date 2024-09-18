@@ -15,8 +15,15 @@ export const cpp = new Subjects.Cpp();
 export const java = new Subjects.Java();
 export const react = new Subjects.React();
 
-for (const subject of [cpp, java, react]) {
-  subject.setTeacher = cTeacher;
-  console.log(subject.getRequirements());
-  console.log(subject.getAvailableTeacher());
+const subjectsObj = {
+  'C++': cpp,
+  'Java': java,
+  'React': react,
+}
+
+for (const label in subjectsObj) {
+  console.log(label);
+  subjectsObj[label].setTeacher = cTeacher;
+  console.log(subjectsObj[label].getRequirements());
+  console.log(subjectsObj[label].getAvailableTeacher());
 }
