@@ -39,19 +39,18 @@ const countStudents = (path) => new Promise((resolve, reject) => {
     }
   });
 });
-  
 
 app.get('/', (req, res) => {
   res.send('Hello Holberton School!');
 });
 
 app.get('/students', (req, res) => {
-  let toSend = 'This is the list of our students\n'
+  const toSend = 'This is the list of our students\n';
   countStudents(dbPath).then((data) => {
-    res.send(toSend + data);
-  }).catch((err) => {
-    res.send(toSend + 'Cannot load the database');
-  })
+    res.send(`${toSend}${data}`);
+  }).catch(() => {
+    res.send(`${toSend}Cannot load the database`);
+  });
 });
 
 app.listen(1245);
