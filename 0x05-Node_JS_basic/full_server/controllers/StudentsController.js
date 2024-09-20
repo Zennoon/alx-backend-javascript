@@ -10,7 +10,7 @@ export default class StudentsController {
         resBody = resBody.concat(`Number of students in ${field}: ${names.length}. List: ${names.join(', ')}\n`);
       }
       response.send(resBody.trim());
-    }).catch(() => {
+    }).catch(() => {000000000000000000000000000000000000000000000000000000000000000000000
       response.statusCode = 500;
       response.send('Cannot load the database');
     });
