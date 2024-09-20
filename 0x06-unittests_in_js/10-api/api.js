@@ -21,13 +21,10 @@ app.get('/available_payments', (req, res) => {
   res.send(paymentMethods);
 });
 
-app.post('/login', (request, response) => {
-  const userName = request.body.userName;
-  if (userName) {
-    response.send(`Welcome ${userName}`);
-  } else {
-    response.status(404).send();
-  }
+app.post('/login', (req, res) => {
+  const username = req.body.userName;
+  
+  res.send(`Welcome ${username}`);
 });
 
 app.listen(7865, () => {
